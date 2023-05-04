@@ -25,9 +25,7 @@ def read_sheet(_file_path, _sheet_name, _nrows):
     _columns = list(old_columns)
     _columns[1:] = [index.replace('.',' ').replace('  ', ' ').replace(' ', ', ')for index in _columns[1:]]
 
-    # changing column name to date format (e.g Jan, 20 -->  2020-01-01)
-    _columns[1:] = [dt.datetime.strftime(dt.datetime.strptime(index,'%b, %Y'),'%Y-%m-%d') for index in _columns[1:]]
-    _columns[0] = 'business_kind'
+    # changing column name to date format (e.g Jan, 20 -->  2020-01-01
     column_names = dict(zip(old_columns,_columns))
     sheet.rename(columns=column_names, inplace=True)
 
